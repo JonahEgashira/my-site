@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple株価 (直近1週間)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            width: 80%;
+            max-width: 900px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apple (AAPL) 株価推移 (直近1週間)</h1>
+
+    <div class="chart-container">
+        <canvas id="stockChart"></canvas>
+    </div>
+
+    <table id="stockData">
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>終値 (USD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2025年8月5日</td>
+                <td>202.92</td>
+            </tr>
+            <tr>
+                <td>2025年8月4日</td>
+                <td>203.35</td>
+            </tr>
+            <tr>
+                <td>2025年8月1日</td>
+                <td>202.38</td>
+            </tr>
+            <tr>
+                <td>2025年7月31日</td>
+                <td>207.57</td>
+            </tr>
+            <tr>
+                <td>2025年7月30日</td>
+                <td>209.05</td>
+            </tr>
+            <tr>
+                <td>2025年7月29日</td>
+                <td>211.27</td>
+            </tr>
+            <tr>
+                <td>2025年7月28日</td>
+                <td>214.05</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const table = document.getElementById('stockData');
+            const labels = [];
+            const data = [];
+
+            // Skip header row, reverse order for chronological chart
+            for (let i = table.rows.length - 1; i > 0; i--) {
+                labels.push(table.rows[i].cells[0].innerText);
+                data.push(parseFloat(table.rows[i].cells[1].innerText));
+            }
+
+            const ctx = document.getElementById('stockChart').getContext('2d');
+            const stockChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '終値 (USD)',
+                        data: data,
+                        borderColor: '#0071e3',
+                        backgroundColor: 'rgba(0, 113, 227, 0.1)',
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

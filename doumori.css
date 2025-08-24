@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #fdf6e3; /* A soft, creamy background */
+    --text-color: #5c544b; /* A friendly, dark brown */
+    --header-bg: #a9d6a9; /* A soft, grassy green */
+    --accent-color: #87c38f; /* A slightly darker green for accents */
+    --container-bg: #fffaf0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    border-bottom: 5px solid var(--accent-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--container-bg);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    text-align: center;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--header-bg);
+    border-bottom: 3px dashed var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+li {
+    background: var(--bg-color);
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid var(--accent-color);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 18px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+/* Typewriter cursor */
+#welcome-message {
+    display: inline-block;
+}
+
+.blinking-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 28px;
+    background-color: var(--text-color);
+    animation: blink 1s step-end infinite;
+    margin-left: 8px;
+    border-radius: 2px;
+}
+
+@keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
